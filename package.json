@@ -4,13 +4,18 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "test": "jest",
+    "start": "node index.js",
+    "writeJSON": "node scripts/writeJSON.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "xml2js": "^0.4.23"
+  },
+  "devDependencies": {
+    "jest": "^26.1.0"
   }
 }
