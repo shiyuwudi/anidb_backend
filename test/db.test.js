@@ -19,8 +19,4 @@ test('parseXMLToJSON works', async () => {
 test("parseXML works", async () => {
     const result = await parseXML(xmlPath);
     expect(result.length > 0).toBeTruthy();
-    fs.writeFileSync(
-        path.resolve("./data/anime-titles.json"),
-        JSON.stringify(result, null, 2)
-    );
 });

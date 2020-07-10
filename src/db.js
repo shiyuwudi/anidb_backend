@@ -14,9 +14,9 @@ async function parseXML(path) {
 
 function parseXMLToJSON(path) {
     var parseString = require('xml2js').parseString;
-    var xml = fs.readFileSync(path);
+    var xmlStr = fs.readFileSync(path) + "";
     return new Promise((resolve, reject) => {
-        parseString(xml, function (err, result) {
+        parseString(xmlStr, function (err, result) {
             if (err) {
                 reject(err);
             } else {

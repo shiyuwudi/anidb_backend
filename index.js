@@ -1,7 +1,9 @@
 var dgram = require('dgram');
 var constants = require("./consts");
 const express = require('express');
-const app = express()
+const list = require("./data/anime-titles.json");
+
+const app = express();
 const port = constants.server.port;
 var lastSendTime = -1;
 var TIME_TO_WAIT_UNTIL_NEXT_PACKET = 10000; // ms
@@ -66,4 +68,21 @@ app.get('/updated', async (req, res) => {
     res.send(r);
 });
 
-app.listen(port, () => console.log(`Example app listening at http://localhost:${port}`))
+// for front-end cache
+app.get('/list-metadata', (req, res) => {
+    res.send({
+        result: constants.anidb.jsonMetadata,
+    });
+});
+
+// if front-end side has no cache, it will request full-list
+app.get('/list', (req,res) => {
+    res.send({
+        result: list,
+    });
+});
+
+// start a server
+app.listen(port, () => console.log(`Example app listening at http://localhost:${port}`));
+
+
